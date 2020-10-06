@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <script>
+      $(() => {
+        //e.g. http://slashlook.com/articles_20170301.html
+        var cUrlPath = window.location.pathname;
+        var cRightUrl = "http://slashview.com/";
+        var iRedirectSecond = 0;
+        var cKey = "/articles_";
+        if (cUrlPath.indexOf(cKey) !== -1) {
+          //Compute Url
+          var cDateHtml = cUrlPath.substring(cUrlPath.indexOf(cKey) + cKey.length);
+          cRightUrl = "http://slashview.com/archive" + cDateHtml.substring(0, 4) + "/" + cDateHtml;
+        } else {
+          cRightUrl = "http://slashview.com/";
+        }
+        //Write Meta
+        $('head').append("<meta http-equiv='refresh' content='" + iRedirectSecond + "; url=" + cRightUrl + "'/>");
+        $('head').append("<link rel='canonical' href='" + cRightUrl + "'/>");
+        //Countdown
+        (function countdown(iCount) {
+          if (iCount <= 0) { window.location.assign(cRightUrl); }
+          setTimeout(function () { countdown(iCount - 1); }, 1000);
+        })(iRedirectSecond);
+      });
+    </script>
+  </body>
+</html>
