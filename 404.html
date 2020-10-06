@@ -17,7 +17,7 @@
           var cDateHtml = cUrlPath.substring(cUrlPath.indexOf(cKey) + cKey.length);
           cRightUrl = cRightUrl + "/archive" + cDateHtml.substring(0, 4) + "/" + cDateHtml;
         } else {
-          cRightUrl = cRightUrl + "/_resource/html/articles.html";
+          cRightUrl = cRightUrl + cUrlPath;
         }
         //Write Meta
         $('head').append("<meta http-equiv='refresh' content='" + iRedirectSecond + "; url=" + cRightUrl + "'/>");
