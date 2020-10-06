@@ -9,15 +9,15 @@
       $(() => {
         //e.g. http://slashlook.com/articles_20170301.html
         var cUrlPath = window.location.pathname;
-        var cRightUrl = "http://slashview.com/";
+        var cRightUrl = "http://slashview.com";
         var iRedirectSecond = 0;
         var cKey = "/articles_";
         if (cUrlPath.indexOf(cKey) !== -1) {
           //Compute Url
           var cDateHtml = cUrlPath.substring(cUrlPath.indexOf(cKey) + cKey.length);
-          cRightUrl = "http://slashview.com/archive" + cDateHtml.substring(0, 4) + "/" + cDateHtml;
+          cRightUrl = cRightUrl + "/archive" + cDateHtml.substring(0, 4) + "/" + cDateHtml;
         } else {
-          cRightUrl = "http://slashview.com/";
+          cRightUrl = cRightUrl + "/_resource/html/articles.html";
         }
         //Write Meta
         $('head').append("<meta http-equiv='refresh' content='" + iRedirectSecond + "; url=" + cRightUrl + "'/>");
